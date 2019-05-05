@@ -1,14 +1,14 @@
 /*!
- * This file is part of `components` module. 
- * 
+ * This file is part of `components` module.
+ *
  * Authors:
  *      jason <jasonsoop@gmail.com>
- * 
+ *
  * Licensed under the MIT License.
- * Copyright (C) 2010-2017 Flagwind Inc. All rights reserved. 
+ * Copyright (C) 2010-2017 Flagwind Inc. All rights reserved.
  */
 
-import flagwind from "flagwind-core";
+import flagwind from "@egova/flagwind-core";
 import Type = flagwind.Type;
 import Vue, { VNode } from "vue";
 import { Component } from "../../common";
@@ -75,10 +75,10 @@ export default class EditField extends Component
     protected get editComponentNode(): VNode | undefined
     {
         const defaultSlot = this.$slots.default;
-        
+
         return defaultSlot ? defaultSlot[0] : undefined;
     }
-    
+
     /**
      * 获取编辑组件的标签。
      * @protected
@@ -100,10 +100,10 @@ export default class EditField extends Component
                 return editNode.tag;
             }
         }
-        
+
         return "";
     }
-    
+
     /**
      * 获取编辑组件的实例。
      * @protected
@@ -183,7 +183,7 @@ export default class EditField extends Component
      */
     @config({ type: Boolean, default: true })
     public enterSubmit!: boolean;
-    
+
     /**
      * 当组件创建完成时调用。
      * @protected
@@ -218,7 +218,7 @@ export default class EditField extends Component
 
         // 绑定内联编辑组件的 input 事件，以便监听数据变动
         this.editComponent!.$on("input", this.onInputChange);
-        
+
         // 绑定输入框回车键事件
         if(this.enterSubmit && this.editComponentTag === EditComponentTypes.input)
         {
@@ -245,9 +245,9 @@ export default class EditField extends Component
         {
             this.originalValue = this.currentValue;
         }
-        
+
     }
-    
+
     /**
      * 当点击编辑完成按钮时调用。
      * @protected
@@ -258,7 +258,7 @@ export default class EditField extends Component
     {
         this.saving = true;
         this.editing = false;
-        
+
         if(equals(this.currentValue, this.originalValue))
         {
             this.onEditSuccess();
@@ -304,7 +304,7 @@ export default class EditField extends Component
             this.onEditSuccess();
         }
     }
-    
+
     /**
      * 当编辑成功时调用。
      * @private
@@ -313,7 +313,7 @@ export default class EditField extends Component
     private onEditSuccess(): void
     {
         this.updateDisplayValue();
-        
+
         this.saving = false;
         this.editing = false;
     }
@@ -355,7 +355,7 @@ export default class EditField extends Component
         // 设置当前值
         this.currentValue = value;
     }
-    
+
     /**
      * 验证内联编辑组件是否有效。
      * @private
@@ -377,7 +377,7 @@ export default class EditField extends Component
 
         return true;
     }
-    
+
     /**
      * 根据当前值更新用于显示的值。
      * @private
@@ -387,7 +387,7 @@ export default class EditField extends Component
     {
         const value: any = this.currentValue;
         const editComponent: any = this.editComponent;
-        
+
         // 如果配置了自定义格式化函数，则交由格式化函数处理
         if(this.renderFormat)
         {
@@ -411,7 +411,7 @@ export default class EditField extends Component
             {
                 // 输入框或者数值输入库则直接取原始值做显示
                 this.displayValue = value;
-                
+
                 break;
             }
             case EditComponentTypes.switch:
@@ -422,7 +422,7 @@ export default class EditField extends Component
                 if(editComponent.currentValue === editComponent.trueValue)
                 {
                     const openSlot = editComponentSlots.open ? editComponentSlots.open[0] : null;
-                    
+
                     // 如果 switch 组件有定义名为 open 的插槽，则取插槽中的文本，否则就取 switch 组件配置的的 true 值
                     this.displayValue = openSlot ? openSlot.children[0].text.trim() : editComponent.trueValue;
                 }
@@ -451,13 +451,13 @@ export default class EditField extends Component
                 {
                     this.displayValue = editComponent.displayRender;
                 });
-                
+
                 break;
             }
             case EditComponentTypes.select:
             {
                 const labels = editComponent.values.map((item: any) => item.label);
-                    
+
                 this.displayValue = labels.join(this.separator);
 
                 break;
@@ -466,7 +466,7 @@ export default class EditField extends Component
             {
                 // 单选组需要找到标签等于值得那个单选框，然后再获取其 html 中的文本
                 const radio = editComponent.childrens.find((item: any) => item.label === value);
-                
+
                 if(radio)
                 {
                     this.displayValue = radio.$el.innerText.trim();

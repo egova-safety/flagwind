@@ -17,9 +17,6 @@
         ],
         "paths": {
             "*": ["types/*"],
-            "flagwind-web": [
-                "examples/application/flagwind/flagwind-web.ts"
-            ],
             "@/*": [
                 "src/*"
             ]
@@ -36,10 +33,6 @@
             "node_modules"
         ]
     },
-    "include": [
-        "examples/**/*.ts",
-
-    ],
     "exclude": [
         "node_modules"
     ]

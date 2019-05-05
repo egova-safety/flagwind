@@ -30,7 +30,8 @@
         "echarts": "^4.1.0"
     },
     "devDependencies": {
-        "@egova/flagwind-web": "^1.0.13",
+        "@egova/flagwind-web": "^1.0.14",
+        "@egova/flagwind-core": "^1.1.0",
         "@types/echarts": "^4.1.4",
         "@types/lodash.debounce": "^4.0.5",
         "@types/node": "^11.9.4",
@@ -41,7 +42,6 @@
         "compression-webpack-plugin": "^2.0.0",
         "declaration-bundler-webpack-plugin": "^1.0.3",
         "echarts": "^4.1.0",
-        "flagwind-core": "^1.1.0",
         "friendly-errors-webpack-plugin": "^1.7.0",
         "iview": "^3.2.2",
         "less": "^3.9.0",

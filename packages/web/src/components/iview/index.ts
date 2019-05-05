@@ -5,7 +5,7 @@
 * Author: Aresn
 */
 
-import flagwind from "flagwind-core";
+import flagwind from "@egova/flagwind-core";
 import Type = flagwind.Type;
 import iView from "iview";
 

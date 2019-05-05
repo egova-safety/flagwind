@@ -1,14 +1,14 @@
 /*!
- * This file is part of `components` module. 
- * 
+ * This file is part of `components` module.
+ *
  * Authors:
  *      jason <jasonsoop@gmail.com>
- * 
+ *
  * Licensed under the MIT License.
- * Copyright (C) 2010-2017 Flagwind Inc. All rights reserved. 
+ * Copyright (C) 2010-2017 Flagwind Inc. All rights reserved.
  */
 
-import flagwind from "flagwind-core";
+import flagwind from "@egova/flagwind-core";
 import Type = flagwind.Type;
 import ArgumentException = flagwind.ArgumentException;
 import InvalidOperationException = flagwind.InvalidOperationException;
@@ -92,7 +92,7 @@ const createElement = function(html: string): HTMLElement
     let element = document.createElement("div");
 
     element.innerHTML = html;
-    
+
     return element.children[0] as HTMLElement;
 };
 
@@ -127,7 +127,7 @@ export default class NumberCounter extends Component
     private _maxValues!: number;
     private _digits!: Array<HTMLElement>;
     private _transitionEndBound: boolean = false;
-    
+
     /**
      * 渲染容器。
      * @private
@@ -155,7 +155,7 @@ export default class NumberCounter extends Component
      */
     @config({ default: 0 })
     public value!: number;
-    
+
     /**
      * 获取或设置用于格式化数值的字符串表达式。
      * @public
@@ -182,7 +182,7 @@ export default class NumberCounter extends Component
      */
     @config({ default: "(d).dd" })
     public format!: string;
-    
+
     /**
      * 获取或设置用于格式化数值的自定义函数。
      * @public
@@ -197,7 +197,7 @@ export default class NumberCounter extends Component
      */
     @config()
     public formatFunction!: (value: number) => string;
-    
+
     /**
      * 获取或设置动画持续时间。
      * @public
@@ -233,7 +233,7 @@ export default class NumberCounter extends Component
      */
     @config({ default: "slide" })
     public animation!: string;
-    
+
     /**
      * 当数值改变时调用。
      * @param  {number} value
@@ -252,17 +252,17 @@ export default class NumberCounter extends Component
     protected mounted(): void
     {
         this._maxValues = ((this.duration / MS_PER_FRAME) / FRAMES_PER_VALUE) | 0;
-        
+
         // 重置格式化字符串
         this.resetFormat();
 
         // 清洗需要绘制的数值
         this._value = this.cleanValue(this.value);
-        
+
         // 绘制组件
         this.draw();
     }
-    
+
     /**
      * 绘制组件。
      * @param  {number} value 需要绘制的数值。
@@ -272,7 +272,7 @@ export default class NumberCounter extends Component
     {
         // 重置格式化字符串
         this.resetFormat();
-        
+
         // 清空容器的内容
         this.$inside.innerHTML = "";
 
@@ -282,7 +282,7 @@ export default class NumberCounter extends Component
 
         this.formatDigits(value);
     }
-    
+
     /**
      * 更新数值。
      * @param  {number} newValue 需要更新的数值。
@@ -301,7 +301,7 @@ export default class NumberCounter extends Component
 
         // fw-number-counter
         removeClass(this.$el, "fw-number-counter-animating-up fw-number-counter-animating-down fw-number-counter-animating");
-        
+
         if(diff > 0)
         {
             addClass(this.$el, "fw-number-counter-animating-up");
@@ -323,7 +323,7 @@ export default class NumberCounter extends Component
 
         this._value = newValue;
     }
-    
+
     /**
      * 播放数值动画。
      * @param  {number} newValue 需要播放动画的数值。
@@ -340,7 +340,7 @@ export default class NumberCounter extends Component
             this.animateSlide(newValue);
         }
     }
-    
+
     /**
      * 播放 "count" 效果动画。
      * @param  {number} newValue 新的数值。
@@ -359,13 +359,13 @@ export default class NumberCounter extends Component
         let last = start;
         let tick: (time: number) => void;
         let current = this._value;
-        
+
         (tick = (time: number) =>
         {
             if((now() - start) > this.duration)
             {
                 this._value = newValue;
-                
+
                 this.draw();
 
                 this.onComplete();
@@ -415,7 +415,7 @@ export default class NumberCounter extends Component
         }
 
         let diff = newValue - oldValue;
-        
+
         if(diff === 0)
         {
             return;
@@ -441,7 +441,7 @@ export default class NumberCounter extends Component
 
                 let increment = dist / (this._maxValues + this._maxValues * boosted * DIGIT_SPEEDBOOST);
                 let current = start;
-                
+
                 while((dist > 0 && current < end) || (dist < 0 && current > end))
                 {
                     frames.push(Math.round(current));
@@ -533,7 +533,7 @@ export default class NumberCounter extends Component
             this.addSpacer(this._format.radix, this._digits[fractionalCount - 1], "fw-number-counter-radix-mark");
         }
     }
-    
+
     /**
      * 绑定 "transitionend" 事件。
      * @returns void
@@ -565,7 +565,7 @@ export default class NumberCounter extends Component
                     this.draw();
 
                     renderEnqueued = false;
-                    
+
                     this.onComplete();
 
                 }, 0);
@@ -574,7 +574,7 @@ export default class NumberCounter extends Component
             });
         }
     }
-    
+
     /**
      * 获取字符总数。
      * @param  {Array<number>} ...values
@@ -588,10 +588,10 @@ export default class NumberCounter extends Component
         });
 
         let max = Math.max(...values);
-        
+
         return Math.ceil(Math.log(max + 1) / Math.log(10));
     }
-    
+
     /**
      * 获取小数总数。
      * @param  {Array<number>} ...values
@@ -615,10 +615,10 @@ export default class NumberCounter extends Component
                 values[index] = parts[1].length;
             }
         });
-        
+
         return Math.max(...values);
     }
-    
+
     /**
      * 根据字符格式化表达式或函数格式化数值。
      * @param  {number} value
@@ -627,7 +627,7 @@ export default class NumberCounter extends Component
     private formatDigits(value: number): void
     {
         this._digits = [];
-        
+
         if(Type.isFunction(this.formatFunction))
         {
             let valueString: string = this.formatFunction(value);
@@ -637,7 +637,7 @@ export default class NumberCounter extends Component
                 if(valueDigit.match(/0-9/))
                 {
                     let $digit = this.drawDigit();
-                    
+
                     $digit.querySelector(".fw-number-counter-value")!.innerHTML = valueDigit;
 
                     this._digits.push($digit);
@@ -665,7 +665,7 @@ export default class NumberCounter extends Component
             }
         }
     }
-    
+
     /**
      * 插入一个字符至  DOM 节点中。
      * @param  {HTMLElement} digit
@@ -690,7 +690,7 @@ export default class NumberCounter extends Component
             $inside.insertBefore(digit, $children[0]);
         }
     }
-    
+
     /**
      * 添加一个分割字符。
      * @param  {string} chr
@@ -710,7 +710,7 @@ export default class NumberCounter extends Component
 
         this.insertDigit($spacer, before);
     }
-    
+
     /**
      * 添加一个字符。
      * @param  {string} value
@@ -732,11 +732,11 @@ export default class NumberCounter extends Component
 
             return;
         }
-        
+
         if(repeating)
         {
             let resetted = false;
-            
+
             while(true)
             {
                 if(!this._format.repeating.length)
@@ -747,7 +747,7 @@ export default class NumberCounter extends Component
                     }
 
                     this.resetFormat();
-                    
+
                     resetted = true;
                 }
 
@@ -766,7 +766,7 @@ export default class NumberCounter extends Component
 
         // 生成单个字符节点
         let $digit = this.drawDigit();
-        
+
         // 设置字符节点的值
         $digit.querySelector(".fw-number-counter-value")!.innerHTML = value;
 
@@ -776,7 +776,7 @@ export default class NumberCounter extends Component
         // 将字符节点插入组件中
         this.insertDigit($digit);
     }
-    
+
     /**
      * 绘制一个需要显示的字符节点。
      * @private
@@ -786,7 +786,7 @@ export default class NumberCounter extends Component
     {
         return createElement(DIGIT_HTML);
     }
-    
+
     /**
      * 重置字符。
      * @returns void
@@ -798,7 +798,7 @@ export default class NumberCounter extends Component
         this.$inside.innerHTML = "";
         this.resetFormat();
     }
-    
+
     /**
      * 重置格式化字符串为一个匿名对象。
      * @private
@@ -833,7 +833,7 @@ export default class NumberCounter extends Component
     {
         return round(value, this._format.precision);
     }
-    
+
     /**
      * 当动画播放完毕时调用。
      * @returns void

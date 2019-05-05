@@ -39,20 +39,20 @@ module.exports = {
         // });
 
         // 修改插件配置
-        config.plugin('html-index').tap(args => {
-            args[0].minify = {
-                removeComments: true,
-                collapseWhitespace: false,
-                removeAttributeQuotes: false
-            };
-            return args;
-        });
+        // config.plugin('html-index').tap(args => {
+        //     args[0].minify = {
+        //         removeComments: true,
+        //         collapseWhitespace: false,
+        //         removeAttributeQuotes: false
+        //     };
+        //     return args;
+        // });
 
-        config.resolve.alias      
-            .set('flagwind-web', "@egova/flagwind-web/dist/flagwind-web.js")
-            .set('@e', path.join(__dirname, 'examples'))
-            .set('@p', path.join(__dirname, 'packages'))
-            .set('views', path.join(__dirname, 'examples/views'))
+        // config.resolve.alias
+        //     .set('flagwind-web', "@egova/flagwind-web/dist/flagwind-web.js")
+        //     .set('@e', path.join(__dirname, 'examples'))
+        //     .set('@p', path.join(__dirname, 'src'))
+        //     .set('views', path.join(__dirname, 'examples/views'))
 
     },
     //调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
@@ -80,7 +80,7 @@ module.exports = {
         host: "0.0.0.0",
         port: 8000, // 端口号
         https: false, // https:{type:Boolean}
-        open: true, //配置自动启动浏览器  http://172.16.1.12:7071/rest/mcdPhoneBar/ 
+        open: true, //配置自动启动浏览器  http://172.16.1.12:7071/rest/mcdPhoneBar/
         hotOnly: true, // 热更新
         // proxy: 'http://localhost:8000'   // 配置跨域处理,只有一个代理
     }
