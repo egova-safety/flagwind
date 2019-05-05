@@ -1,0 +1,10 @@
+{
+    "defaultSeverity": "warning",
+    "extends": [
+        "tslint-config-flagwind"
+    ],
+    "rules":{
+        "interface-name":false,
+        "eofline":false
+    }
+}

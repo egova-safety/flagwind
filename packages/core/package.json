@@ -1,0 +1,47 @@
+{
+    "name": "@egova/flagwind-core",
+    "version": "1.1.0",
+    "description": "flagwind core library.",
+    "scripts": {
+        "dist": "node scripts/dist.js",
+        "release": "node scripts/release.js",
+        "lint": "tslint src/**/*.ts"
+    },
+    "files": [
+        "dist"
+    ],
+    "main": "dist/flagwind.js",
+    "typings": "dist/flagwind.d.ts",
+    "keywords": [
+        "flagwind",
+        "typescript"
+    ],
+    "license": "MIT",
+    "author": "jason <jasonsoop@gmail.com>",
+    "homepage": "http://www.flagwind.org",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/flagwind/flagwind.core.git"
+    },
+    "bugs": {
+        "url": "https://github.com/flagwind/flagwind.core/issues"
+    },
+    "devDependencies": {
+        "monaco-editor-webpack-plugin": "^1.7.0",
+        "rollup": "^1.6.0",
+        "rollup-plugin-commonjs": "^9.2.1",
+        "rollup-plugin-json": "^3.1.0",
+        "rollup-plugin-node-resolve": "^4.0.1",
+        "rollup-plugin-sourcemaps": "^0.4.2",
+        "rollup-plugin-uglify": "^6.0.2",
+        "shelljs": "^0.8.3",
+        "tslint": "^5.13.1",
+        "tslint-loader": "^3.5.4",
+        "typedoc": "^0.14.2",
+        "typescript": "^3.3.3"
+    },
+    "engines": {
+        "node": ">= 6.0.0",
+        "npm": ">= 3.0.0"
+    }
+}

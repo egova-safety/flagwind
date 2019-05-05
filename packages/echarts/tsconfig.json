@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "jsx": "preserve",
+        "noUnusedLocals": true,
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": [
+            "node", "webpack-env"
+        ],
+        "paths": {
+            "*": ["types/*"],
+            "flagwind-web": [
+                "examples/application/flagwind/flagwind-web.ts"
+            ],
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
+    },
+    "linterOptions": {
+        "exclude": [
+            "node_modules"
+        ]
+    },
+    "include": [
+        "examples/**/*.ts",
+
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

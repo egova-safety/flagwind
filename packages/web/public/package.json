@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "this is static server",
+  "scripts": {
+    "start": "http-server -a 127.0.0.1 -p 7070"
+  },
+  "author": "",
+  "license": "ISC"
+}

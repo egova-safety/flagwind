@@ -1,0 +1,36 @@
+{
+    "include": 
+    [
+        "./src/**/*"
+    ],
+    "exclude": 
+    [
+        "node_modules",
+        "dist",
+        "bin"
+    ],
+    "compilerOptions": 
+    {
+        "target": "es5",
+        "moduleResolution": "node",
+        "outFile": "bin/flagwind.js",
+        "stripInternal": true,
+        "pretty": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "declaration":true,
+        "lib": 
+        [
+            "dom",
+            "es5",
+            "es2015.promise"
+        ]
+    }
+}
