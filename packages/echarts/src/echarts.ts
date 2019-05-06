@@ -1,9 +1,9 @@
 /*!
  * Authors:
  *      jason <jasonsoop@gmail.com>
- * 
+ *
  * Licensed under the MIT License.
- * Copyright (C) 2010-present Flagwind Inc. All rights reserved. 
+ * Copyright (C) 2010-present Flagwind Inc. All rights reserved.
  */
 
 import Vue from "vue";
@@ -59,7 +59,7 @@ const MOUSE_EVENTS =
 @component({template: require("./echarts.html")})
 export default class ECharts extends Component
 {
-    private _chart: echarts.ECharts;                        // ECharts 实例
+    private _chart?: echarts.ECharts;                        // ECharts 实例
     private _resizeHanlder: any;                            // 窗体大小发生变动时的处理函数
 
     /**
@@ -70,7 +70,7 @@ export default class ECharts extends Component
      * @returns number | string
      */
     @config({type: [Number, String]})
-    public width: number | string;
+    public width?: number | string;
 
     /**
      * 获取或设置组件的高度。
@@ -80,7 +80,7 @@ export default class ECharts extends Component
      * @returns number | string
      */
     @config({type: [Number, String]})
-    public height: number | string;
+    public height?: number | string;
 
     /**
      * 获取或设置初始选项。
@@ -92,8 +92,8 @@ export default class ECharts extends Component
      * @returns Object
      */
     @config()
-    public initOptions: { devicePixelRatio?: number; renderer?: string};
-    
+    public initOptions?: { devicePixelRatio?: number; renderer?: string};
+
     /**
      * 获取或设置配置选项。
      * @public
@@ -103,8 +103,8 @@ export default class ECharts extends Component
      * @returns echarts.EChartOption
      */
     @config()
-    public options: echarts.EChartOption;
-    
+    public options!: echarts.EChartOption;
+
     /**
      * 获取或设置应用的主题。
      * @public
@@ -113,7 +113,7 @@ export default class ECharts extends Component
      * @returns string | Object
      */
     @config({type: [String, Object]})
-    public theme: string | Object;
+    public theme?: string | Object;
 
     /**
      * 获取或设置用于联动的分组。
@@ -122,7 +122,7 @@ export default class ECharts extends Component
      * @returns string
      */
     @config()
-    public group: string;
+    public group!: string;
 
     /**
      * 获取或设置一个布尔值，用于指示当窗口被调整大小时是否自动调整 ECharts 实例的大小。
@@ -132,7 +132,7 @@ export default class ECharts extends Component
      * @returns boolean
      */
     @config({default: false})
-    public autoResize: boolean;
+    public autoResize!: boolean;
 
     /**
      * 获取或设置一个布尔值，用于关闭 options 更改时默认的 deep 监测。
@@ -142,7 +142,7 @@ export default class ECharts extends Component
      * @returns boolean
      */
     @config({default: false})
-    public watchShallow: boolean;
+    public watchShallow!: boolean;
 
     /**
      * 获取一个布尔值，表示 ECharts 实例是否已经被释放。
@@ -165,7 +165,7 @@ export default class ECharts extends Component
     {
         return this.dispathProperty("width", "getWidth");
     }
-    
+
     /**
      * 获取 ECharts 实例容器的高度。
      * @public
@@ -176,7 +176,7 @@ export default class ECharts extends Component
     {
         return this.dispathProperty("height", "getHeight");
     }
-    
+
     /**
      * 获取 ECharts 实例维护的 options 对象。
      * @public
@@ -187,7 +187,7 @@ export default class ECharts extends Component
     {
         return this.dispathProperty("computedOptions", "getOption");
     }
-    
+
     /**
      * 设置 ECharts 实例的配置项以及数据。
      * @public
@@ -200,7 +200,7 @@ export default class ECharts extends Component
     {
         this.dispathMethod("mergeOptions", "setOption", options, notMerge, lazyUpdate);
     }
-    
+
     /**
      * 改变图表尺寸，在容器大小发生改变时需要手动调用。
      * @param  {number|string} width? 可显式指定实例宽度，单位为像素。如果传入值为 null/undefined/"auto"，则表示自动取 dom（实例容器）的宽度。
@@ -212,7 +212,7 @@ export default class ECharts extends Component
     {
         this.dispathMethod("resize", "resize", {width, height, silent});
     }
-    
+
     /**
      * 触发图表行为，例如图例开关 legendToggleSelect, 数据区域缩放 dataZoom，显示提示框 showTip 等等，更多见 action 和 events 的文档。
      * @public
@@ -226,7 +226,7 @@ export default class ECharts extends Component
 
     /**
      * 转换坐标系上的点到像素坐标值。
-     * @public 
+     * @public
      * @param  {Object} finder 用于指示『使用哪个坐标系进行转换』，通常地，可以使用 index 或者 id 或者 name 来定位。
      * @param  {string|Array<any>} value 要被转换的值。
      * @returns string | Array<any> 转换的结果为像素坐标值，以 ECharts 实例的 dom 节点的左上角为坐标 [0, 0] 点。
@@ -235,7 +235,7 @@ export default class ECharts extends Component
     {
         return this.dispathMethod("convertToPixel", "convertToPixel", finder, value);
     }
-    
+
     /**
      * 转换像素坐标值到逻辑坐标系上的点。是 convertToPixel 的逆运算。 具体实例可参考 convertToPixel。
      * @public
@@ -247,7 +247,7 @@ export default class ECharts extends Component
     {
         return this.dispathMethod("convertFromPixel", "convertFromPixel", finder, value);
     }
-    
+
     /**
      * 判断给定的点是否在指定的坐标系或者系列上。
      * @description 目前支持在这些坐标系和系列上进行判断：grid, polar, geo, series-map, series-graph, series-pie。
@@ -260,7 +260,7 @@ export default class ECharts extends Component
     {
         return this.dispathMethod("containPixel", "containPixel", finder, value);
     }
-    
+
     /**
      * 显示加载动画效果。可以在加载数据前手动调用改接口显示加载动画，在数据加载完成后调用 hideLoading 隐藏加载动画。
      * @public
@@ -272,7 +272,7 @@ export default class ECharts extends Component
     {
         this.dispathMethod("showLoading", "showLoading", type, options);
     }
-    
+
     /**
      * 隐藏动画加载效果。
      * @public
@@ -282,7 +282,7 @@ export default class ECharts extends Component
     {
         this.dispathMethod("hideLoading", "hideLoading");
     }
-    
+
     /**
      * 导出图表图片，返回一个 base64 的 url。
      * @public
@@ -314,7 +314,7 @@ export default class ECharts extends Component
     {
         return this.dispathMethod("getConnectedDataUrl", "getConnectedDataURL", options);
     }
-    
+
     /**
      * 清空当前实例，会移除实例中所有的组件和图表。
      * @public
@@ -324,7 +324,7 @@ export default class ECharts extends Component
     {
         this.dispathMethod("clear", "clear");
     }
-    
+
     /**
      * 销毁实例，销毁后实例无法再被使用。
      * @public
@@ -352,11 +352,11 @@ export default class ECharts extends Component
             }
             else
             {
-                this._chart.setOption(options);
+                this._chart!.setOption(options);
             }
 
         }, ({ deep: !this.watchShallow }));
-        
+
         // 监听尺寸选项变动
         let size = ["width", "height"];
 
@@ -365,23 +365,23 @@ export default class ECharts extends Component
             this.$watch(prop, () =>
             {
                 this.resize(this.width, this.height);
-            
+
             }, { deep: true});
         }
-        
+
         // 监听其他选项变动
         let watched = ["theme", "initOptions", "autoResize", "watchShallow"];
-        
+
         for(let prop of watched)
         {
             this.$watch(prop, () =>
             {
                 this.refresh();
-            
+
             }, { deep: true});
         }
     }
-    
+
     /**
      * 创建组件时调用的钩子方法。
      * @protected
@@ -434,7 +434,7 @@ export default class ECharts extends Component
     @watch("group")
     protected onGroupChange(group: string): void
     {
-        this._chart.group = group;
+        (<any>this._chart!).group = group;
     }
 
     /**
@@ -448,7 +448,7 @@ export default class ECharts extends Component
         {
             return;
         }
-        
+
         let initOptions: any = this.initOptions || {};
 
         // 设置初始尺寸
@@ -468,7 +468,7 @@ export default class ECharts extends Component
         }
 
         // 设置选项
-        chart.setOption(this.options, true);
+        chart.setOption(this.options!, true);
 
         // 转发 ECharts 事件
         for(let event of [...ACTION_EVENTS, ...MOUSE_EVENTS])
@@ -507,9 +507,9 @@ export default class ECharts extends Component
 
         this.dispose();
 
-        this._chart = null;
+        this._chart = undefined;
     }
-    
+
     /**
      * 刷新 ECharts。
      * @private
@@ -521,7 +521,7 @@ export default class ECharts extends Component
 
         this.initialize();
     }
-    
+
     /**
      * 转发方法调用至 ECharts 实例中。
      * @private
@@ -534,14 +534,14 @@ export default class ECharts extends Component
     {
         if(!this._chart)
         {
-            Vue["util"].warn(`Cannot call [${name}] before the chart is initialized. Set prop [options] first.`, this);
+            (<any>Vue)["util"].warn(`Cannot call [${name}] before the chart is initialized. Set prop [options] first.`, this);
 
             return;
         }
-        
-        return this._chart[method](...args);
+
+        return (<any>this._chart!)[method](...args);
     }
-    
+
     /**
      * 转发属性调用至 ECharts 实例中。
      * @private
@@ -553,14 +553,14 @@ export default class ECharts extends Component
     {
         if(!this._chart)
         {
-            Vue["util"].warn(`Cannot get [${name}] before the chart is initialized. please set config [options] first.`, this);
+            (<any>Vue)["util"].warn(`Cannot get [${name}] before the chart is initialized. please set config [options] first.`, this);
 
             return;
         }
-        
-        return this._chart[method]();
+
+        return (<any>this._chart!)[method]();
     }
-    
+
     /**
      * 多个图表实例实现联动。
      * @public
@@ -572,7 +572,7 @@ export default class ECharts extends Component
     {
         echarts.connect(group);
     }
-    
+
     /**
      * 解除图表实例的联动，如果只需要移除单个实例，可以将通过将该图表实例 group 设为空。
      * @public
@@ -584,7 +584,7 @@ export default class ECharts extends Component
     {
         echarts.disConnect(group);
     }
-    
+
     /**
      * 注册可用的地图，必须在包括 geo 组件或者 map 图表类型的时候才能使用。
      * @public
@@ -598,7 +598,7 @@ export default class ECharts extends Component
     {
         echarts.registerMap(mapName, geoJson, specialAreas);
     }
-    
+
     /**
      * 获取已注册的地图。
      * @public
@@ -610,7 +610,7 @@ export default class ECharts extends Component
     {
         return echarts["getMap"](mapName);
     }
-    
+
     /**
      * 注册主题，用于初始化实例的时候指定。
      * @public
