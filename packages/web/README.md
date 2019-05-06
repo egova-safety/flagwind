@@ -10,8 +10,3 @@
 npm run dist
 ```
 
-## 调试
-
-```
-npm run serve
-```
