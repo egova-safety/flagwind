@@ -1,11 +1,11 @@
 {
     "name": "@egova/flagwind-echarts",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "flagwind echarts library",
     "author": "jason <jasonsoop@gmail.com>",
     "publishConfig": {
-		"access": "public"
-	},
+        "access": "public"
+    },
     "keywords": [
         "flagwind",
         "typescript"
@@ -26,16 +26,15 @@
         "dist:types": "tsc -d --emitDeclarationOnly --declarationDir dist/types",
         "dist": "npm run dist:build && npm run dist:types"
     },
-    "dependencies": {},
     "peerDependencies": {
-        "lodash.debounce": "^4.0.8",
-        "@egova/flagwind-web": "^1.0.14",
         "@egova/flagwind-core": "^1.1.0",
-        "echarts": "^4.1.0"
+        "@egova/flagwind-web": "^1.0.14",
+        "echarts": "^4.1.0",
+        "lodash.debounce": "^4.0.8"
     },
     "devDependencies": {
-        "@egova/flagwind-web": "^1.0.14",
-        "@egova/flagwind-core": "^1.1.0",
+        "@egova/flagwind-core": "^1.1.1",
+        "@egova/flagwind-web": "^1.0.15",
         "@types/echarts": "^4.1.4",
         "@types/lodash.debounce": "^4.0.5",
         "@types/node": "^11.9.4",

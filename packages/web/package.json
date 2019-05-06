@@ -1,11 +1,11 @@
 {
     "name": "@egova/flagwind-web",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "description": "flagwind web library",
     "author": "jason <jasonsoop@gmail.com>",
     "publishConfig": {
-		"access": "public"
-	},
+        "access": "public"
+    },
     "keywords": [
         "flagwind",
         "typescript"
@@ -27,17 +27,16 @@
         "dist": "npm run dist:build && npm run dist:types",
         "lint": "vue-cli-service lint"
     },
-    "dependencies": {},
     "peerDependencies": {
-        "equals": "^1.0.5",
         "@egova/flagwind-core": "^1.1.0",
-        "vue": "^2.6.7",
+        "equals": "^1.0.5",
         "iview": "^3.2.2",
+        "vue": "^2.6.7",
         "vue-class-component": "^7.0.1",
         "vue-property-decorator": "^8.1.0"
     },
     "devDependencies": {
-        "@egova/flagwind-core": "^1.1.0",
+        "@egova/flagwind-core": "^1.1.1",
         "@types/node": "^12.0.0",
         "@vue/cli-plugin-babel": "^3.4.0",
         "@vue/cli-plugin-typescript": "^3.4.0",
