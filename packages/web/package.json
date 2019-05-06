@@ -28,7 +28,7 @@
         "lint": "vue-cli-service lint"
     },
     "peerDependencies": {
-        "@egova/flagwind-core": "^1.1.0",
+        "@egova/flagwind-core": "^1.1.1",
         "equals": "^1.0.5",
         "iview": "^3.2.2",
         "vue": "^2.6.7",
