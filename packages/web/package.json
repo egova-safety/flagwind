@@ -3,6 +3,9 @@
     "version": "1.0.14",
     "description": "flagwind web library",
     "author": "jason <jasonsoop@gmail.com>",
+    "publishConfig": {
+		"access": "public"
+	},
     "keywords": [
         "flagwind",
         "typescript"

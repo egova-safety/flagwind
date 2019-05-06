@@ -2,6 +2,9 @@
     "name": "@egova/flagwind-core",
     "version": "1.1.0",
     "description": "flagwind core library.",
+    "publishConfig": {
+		"access": "public"
+	},
     "scripts": {
         "lint": "tslint src/**/*.ts",
         "dist:compile": "tsc -p .",

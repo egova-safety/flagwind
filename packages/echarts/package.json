@@ -3,6 +3,9 @@
     "version": "1.0.1",
     "description": "flagwind echarts library",
     "author": "jason <jasonsoop@gmail.com>",
+    "publishConfig": {
+		"access": "public"
+	},
     "keywords": [
         "flagwind",
         "typescript"
