@@ -4,9 +4,9 @@
     "description": "flagwind core library.",
     "scripts": {
         "lint": "tslint src/**/*.ts",
-        "build:compile": "tsc -p .",
-        "build:dist": "node build/dist.js",
-        "build": "npm run lint && npm run build:compile && npm run build:dist"
+        "dist:compile": "tsc -p .",
+        "dist:build": "node build/build.js",
+        "dist": "npm run lint && npm run dist:compile && npm run dist:build"
     },
     "files": [
         "dist"

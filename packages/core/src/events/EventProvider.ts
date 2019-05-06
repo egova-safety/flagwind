@@ -15,7 +15,7 @@ namespace flagwind
          * @returns string
          */
         public readonly type: string;
-        
+
         /**
          * 获取事件的侦听函数。
          * @readonly
@@ -39,7 +39,7 @@ namespace flagwind
          * @returns boolean
          */
         public readonly once: boolean;
-        
+
         /**
          * 初始化事件项的新实例。
          * @param  {string} type 事件类型。
@@ -66,7 +66,7 @@ namespace flagwind
     {
         private _source: any;                                               // 事件源
         private _events: Map<string, Array<EventEntry>>;                    // 事件监听器字典
-        
+
         /**
          * 初始化事件提供程序的新实例。
          * @param  {any} source? 事件源实例。
@@ -75,7 +75,7 @@ namespace flagwind
         {
             // 保存事件源对象
             this._source = source || this;
-            
+
             // 初始化事件字典
             this._events = new Map<string, Array<EventEntry>>();
         }
@@ -88,7 +88,7 @@ namespace flagwind
          * @param  {Function} 处理事件的侦听器函数。
          * @param  {any} scope? 侦听函数绑定的 this 对象。
          * @param  {boolean} once? 是否添加仅回调一次的事件侦听器，如果此参数设为 true 则在第一次回调时就自动移除监听。
-         * @returns void
+         * @returns void+
          */
         public addListener(type: string, listener: Function, scope: any = this, once: boolean = false): void
         {
@@ -96,13 +96,13 @@ namespace flagwind
             {
                 throw new ArgumentException();
             }
-            
+
             let entries = this._events.get(type);
 
             if(!entries)
             {
                 entries = new Array<EventEntry>();
-                
+
                 this._events.set(type, entries);
             }
 
@@ -117,7 +117,7 @@ namespace flagwind
 
             entries.push(new EventEntry(type, listener, scope, once));
         }
-        
+
         /**
          * 移除侦听器。如果没有注册任何匹配的侦听器，则对此方法的调用没有任何效果。
          * @param  {string} type 事件类型。
@@ -157,7 +157,7 @@ namespace flagwind
                 this._events.delete(type);
             }
         }
-        
+
         /**
          * 检查是否为特定事件类型注册了侦听器。
          * @param  {string} type 事件类型。
@@ -169,7 +169,7 @@ namespace flagwind
 
             return !!entries && entries.length > 0;
         }
-        
+
         /**
          * 派发一个指定类型的事件。
          * @param  {string} type 事件类型。
@@ -188,10 +188,10 @@ namespace flagwind
         {
             let params = arguments,
                 args: EventArgs;
-            
+
             switch(params.length)
             {
-                // 重载匹配: 
+                // 重载匹配:
                 // dispatchEvent(args: EventArgs): void;
                 // dispatchEvent(type: string): void;
                 case 1:
@@ -222,7 +222,7 @@ namespace flagwind
 
             // 设置事件源
             args.source = this._source;
-            
+
             // 根据事件类型获取所有事件项
             let entries = this._events.get(args.type);
 
@@ -230,7 +230,7 @@ namespace flagwind
             {
                 return;
             }
-            
+
             // 临时数组用于保存只回掉一次的事件项
             let onces = new Array<EventEntry>();
 

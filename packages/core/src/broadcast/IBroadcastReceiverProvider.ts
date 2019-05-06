@@ -7,6 +7,17 @@ namespace flagwind
      */
     export interface IBroadcastReceiverProvider
     {
+        /***
+         * 清除所有注册信息
+         */
+        clear(): void;
+
+        /**
+         * 是否存在该uri的注册的接收器
+         * @param uri 广播契约uri
+         */
+        has(uri: string): boolean ;
+
         /**
          * 注册一个广播接收器至容器中。
          * @param  {BroadcastContract} contract 广播契约。
@@ -14,7 +25,7 @@ namespace flagwind
          * @returns void
          */
         register(contract: BroadcastContract, receiver: IBroadcastReceiver): void;
-        
+
         /**
          * 移除指定契约的广播接收器。
          * @param  {BroadcastContract} contract 广播契约。

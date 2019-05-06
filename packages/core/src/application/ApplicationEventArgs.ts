@@ -1,4 +1,4 @@
-/// <reference path="../events/EventArgs" />
+/// <reference path="../events/EventArgs.ts" />
 
 namespace flagwind
 {
@@ -14,7 +14,7 @@ namespace flagwind
          * @member
          */
         public readonly context: ApplicationContextBase;
-        
+
         /**
          * 初始化应用程序事件参数类的新实例。
          * @param  {string} type 事件类型。
@@ -23,7 +23,7 @@ namespace flagwind
         public constructor(type: string, context: ApplicationContextBase)
         {
             super(type);
-            
+
             this.context = context;
         }
     }

@@ -1,4 +1,4 @@
-/// <reference path="../events/EventProvider" />
+/// <reference path="../events/EventProvider.ts" />
 
 namespace flagwind
 {
@@ -13,13 +13,13 @@ namespace flagwind
         private _status: any;                                           // 工作台状态
         private _title: string;                                         // 工作台标题
         private _applicationContext: ApplicationContextBase;            // 应用程序上下文实例
-        
+
         /**
          * 当工作台正在打开时产生的事件。
          * @event EventArgs
          */
         public readonly OPENING: string = "opening";
-        
+
         /**
          * 当工作台被打开后产生的事件。
          * @event EventArgs
@@ -55,13 +55,13 @@ namespace flagwind
          * @event EventArgs
          */
         public readonly CLOSED: string = "closed";
-        
+
         /**
          * 当工作台标题被更改后产生的事件。
          * @event EventArgs
          */
         public readonly TITLE_CHANGED: string = "title_changed";
-        
+
         /**
          * 获取工作台的当前状态。
          * @property
@@ -71,7 +71,7 @@ namespace flagwind
         {
             return this._status;
         }
-        
+
         /**
          * 获取或设置工作台的标题。
          * @property
@@ -95,7 +95,7 @@ namespace flagwind
             // 通知标题被更改
             this.onTitleChanged();
         }
-        
+
         /**
          * 获取工作台所属的应用程序上下文实例。
          * @property
@@ -107,7 +107,7 @@ namespace flagwind
         }
 
         /**
-         * 初始化工作台的新实例。 
+         * 初始化工作台的新实例。
          * @protected
          * @param  {ApplicationContextBase} applicationContext+
          */
@@ -138,7 +138,7 @@ namespace flagwind
             {
                 return;
             }
-            
+
             try
             {
                 // 通知工作台正在打开中
@@ -193,12 +193,12 @@ namespace flagwind
             {
                 return false;
             }
-            
+
             if(originalStatus === WorkbenchStatus.opening)
             {
                 throw new InvalidOperationException();
             }
-            
+
             // 创建 "closing" 事件
             let args = new CancelEventArgs(this.CLOSING);
 
@@ -238,7 +238,7 @@ namespace flagwind
                 {
                     this._status = originalStatus;
                 }
-                
+
                 // 重抛异常，导致后续的关闭代码不能继续，故而上面代码重置了工作台状态
                 throw ex;
             }
@@ -261,13 +261,13 @@ namespace flagwind
         {
             // 保存原来的状态
             let originalStatus = this._status;
-            
+
             // 如果工作台不是在运行中，则直接退出
             if(originalStatus !== WorkbenchStatus.running)
             {
                 return;
             }
-            
+
             try
             {
                 // 通知工作台正在失去焦点中
@@ -281,7 +281,7 @@ namespace flagwind
                 // 重抛异常，导致后续的代码不能继续
                 throw ex;
             }
-            
+
             try
             {
                 // 调用虚拟方法以执行实际失去焦点操作
@@ -300,14 +300,14 @@ namespace flagwind
                 // 重抛异常，导致后续的关闭代码不能继续，故而上面代码重置了工作台状态
                 throw ex;
             }
-            
+
             if(this._status !== WorkbenchStatus.deactivated)
             {
                 // 通知工作台取消激活完成
                 this.onDeactivated();
             }
         }
-        
+
         /**
          * 激活工作台。
          * @returns void
@@ -322,7 +322,7 @@ namespace flagwind
             {
                 return;
             }
-            
+
             try
             {
                 // 通知工作台正在获得焦点中
@@ -336,7 +336,7 @@ namespace flagwind
                 // 重抛异常，导致后续的代码不能继续
                 throw ex;
             }
-            
+
             try
             {
                 // 调用虚拟方法以执行实际获得焦点操作
@@ -355,7 +355,7 @@ namespace flagwind
                 // 重抛异常，导致后续的关闭代码不能继续，故而上面代码重置了工作台状态
                 throw ex;
             }
-            
+
             if(this._status === WorkbenchStatus.activating)
             {
                 // 通知工作台取消激活完成
@@ -377,7 +377,7 @@ namespace flagwind
             // 激发工作台"opening"事件
             this.dispatchEvent(this.OPENING);
         }
-        
+
         /**
          * 当工作台打开时调用。
          * @async
@@ -390,7 +390,7 @@ namespace flagwind
         {
             // virtual
         }
-        
+
         /**
          * 当工作台打开完成时调用。
          * @protected
@@ -405,7 +405,7 @@ namespace flagwind
             // 激发工作台"opened"事件
             this.dispatchEvent(this.OPENED);
         }
-        
+
         /**
          * 当准备关闭工作台时调用。
          * @protected
@@ -416,11 +416,11 @@ namespace flagwind
         {
             // 设置工作台的状态为"closing"
             this._status = WorkbenchStatus.closing;
-            
+
             // 激发工作台"closing"事件
             this.dispatchEvent(event);
         }
-        
+
         /**
          * 当工作台关闭时调用。
          * @async
@@ -447,7 +447,7 @@ namespace flagwind
             // 激发工作台"closed"事件
             this.dispatchEvent(this.CLOSED);
         }
-        
+
         /**
          * 当工作台准备失去焦点时调用。
          * @protected
@@ -462,7 +462,7 @@ namespace flagwind
             // 激发工作台"deactivating"事件
             this.dispatchEvent(this.DEACTIVATING);
         }
-        
+
         /**
          * 当工作台失去焦点时调用。
          * @protected
@@ -473,7 +473,7 @@ namespace flagwind
         {
             // virtual
         }
-        
+
         /**
          * 当工作台失去焦点后调用。
          * @protected
