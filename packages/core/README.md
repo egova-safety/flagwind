@@ -9,7 +9,7 @@
 ## 编译
 
 ``` sh
-npm run build
+npm run dist
 ```
 
 ## 测试
