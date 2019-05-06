@@ -5,7 +5,7 @@
   "publishConfig": {
     "ignore": [
       "ignored-file",
-      "demo.html",
+      "dist/demo.html",
       "*.md"
     ]
   },
