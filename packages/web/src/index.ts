@@ -6,7 +6,8 @@
  * Copyright (C) 2010-2017 Flagwind Inc. All rights reserved.
  */
 import "./styles/index.less";
+import components from "./components";
 export * from "./common";
 export * from "./decorators";
 export * from "./components";
-export { default } from "./components";
+export default components;

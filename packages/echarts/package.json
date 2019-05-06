@@ -27,8 +27,8 @@
         "dist": "npm run dist:build && npm run dist:types"
     },
     "peerDependencies": {
-        "@egova/flagwind-core": "^1.1.1",
-        "@egova/flagwind-web": "^1.0.15",
+        "@egova/flagwind-core": "^1.1.2",
+        "@egova/flagwind-web": "^1.0.16",
         "echarts": "^4.1.0",
         "lodash.debounce": "^4.0.8"
     },
