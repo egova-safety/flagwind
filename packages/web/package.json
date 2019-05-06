@@ -1,6 +1,6 @@
 {
     "name": "@egova/flagwind-web",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "description": "flagwind web library",
     "author": "jason <jasonsoop@gmail.com>",
     "publishConfig": {
