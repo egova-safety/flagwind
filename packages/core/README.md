@@ -12,8 +12,3 @@
 npm run dist
 ```
 
-## 测试
-
-```
-npm run test
-```
