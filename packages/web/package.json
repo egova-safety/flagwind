@@ -22,10 +22,10 @@
     "main": "dist/flagwind-web.umd.js",
     "types": "dist/types/index.d.ts",
     "scripts": {
-        "lint": "vue-cli-service lint",
-        "dist": "npm run dist:build && npm run dist:types",
         "dist:build": "vue-cli-service build --target lib --name flagwind-web src/index.ts",
-        "dist:types": "tsc -d --emitDeclarationOnly --declarationDir dist/types"
+        "dist:types": "tsc -d --emitDeclarationOnly --declarationDir dist/types",
+        "dist": "npm run dist:build && npm run dist:types",
+        "lint": "vue-cli-service lint"
     },
     "dependencies": {},
     "peerDependencies": {

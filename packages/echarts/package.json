@@ -19,10 +19,10 @@
     "bugs": {
         "url": "https://github.com/flagwind/flagwind-echarts/issues"
     },
-    "main": "dist/flagwind-echarts.min.js",
+    "main": "dist/flagwind-echarts.umd.js",
     "types": "dist/types/index.d.ts",
     "scripts": {
-        "dist:build": "vue-cli-service build --target lib --name index src/index.ts",
+        "dist:build": "vue-cli-service build --target lib --name flagwind-echarts src/index.ts",
         "dist:types": "tsc -d --emitDeclarationOnly --declarationDir dist/types",
         "dist": "npm run dist:build && npm run dist:types"
     },
@@ -30,6 +30,7 @@
     "peerDependencies": {
         "lodash.debounce": "^4.0.8",
         "@egova/flagwind-web": "^1.0.14",
+        "@egova/flagwind-core": "^1.1.0",
         "echarts": "^4.1.0"
     },
     "devDependencies": {

@@ -10,13 +10,7 @@ module.exports = {
     //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
     assetsDir: 'static',
     //以多页模式构建应用程序。
-    pages: {
-        index: {
-            entry: 'examples/index.ts',
-            template: 'public/index.html',
-            filename: 'index.html'
-        }
-    },
+    pages: undefined,
     //是否使用包含运行时编译器的 Vue 构建版本
     runtimeCompiler: true,
     //是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建，在适当的时候开启几个子进程去并发的执行压缩
@@ -32,32 +26,15 @@ module.exports = {
         // 注意：写include和exclude要在use和loader之前写
         config.module.rule('html').test(/\.html$/).exclude.add(/public/).end().use('raw-loader').loader('raw-loader');
 
-        // // 只输出src下ts文件错误
-        // config.plugin('fork-ts-checker').tap(args => {
-        //     args[0].reportFiles = ['src/**/*.{ts,tsx}'];
-        //     return args;
-        // });
-
-        // 修改插件配置
-        // config.plugin('html-index').tap(args => {
-        //     args[0].minify = {
-        //         removeComments: true,
-        //         collapseWhitespace: false,
-        //         removeAttributeQuotes: false
-        //     };
-        //     return args;
-        // });
-
-        // config.resolve.alias
-        //     .set('flagwind-web', "@egova/flagwind-web/dist/flagwind-web.js")
-        //     .set('@e', path.join(__dirname, 'examples'))
-        //     .set('@p', path.join(__dirname, 'src'))
-        //     .set('views', path.join(__dirname, 'examples/views'))
-
     },
     //调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
     configureWebpack: config => {
-
+        config.externals= {
+            "@egova/flagwind-core": "@egova/flagwind-core",
+            "@egova/flagwind-web": "@egova/flagwind-web",
+            "echarts": "echarts",
+            "lodash.debounce": "lodash.debounce"
+        }
     },
     css: {
         // 启用 CSS modules
