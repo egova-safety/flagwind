@@ -9,9 +9,3 @@
 ``` sh
 npm run dist
 ```
-
-## 调试
-
-``` sh
-npm run dev
-```
