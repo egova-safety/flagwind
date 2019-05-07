@@ -28,7 +28,7 @@
     },
     "peerDependencies": {
         "@egova/flagwind-core": "^1.1.2",
-        "@egova/flagwind-web": "^1.0.16",
+        "@egova/flagwind-web": "^1.0.17",
         "echarts": "^4.1.0",
         "lodash.debounce": "^4.0.8"
     },

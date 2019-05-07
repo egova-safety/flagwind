@@ -6,6 +6,8 @@
     "ignore": [
       "ignored-file",
       "dist/demo.html",
+      "src/",
+      "",
       "*.md"
     ]
   },
