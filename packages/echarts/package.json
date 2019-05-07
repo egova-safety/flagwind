@@ -6,6 +6,9 @@
     "publishConfig": {
         "access": "public"
     },
+    "files": [
+        "dist"
+    ],
     "keywords": [
         "flagwind",
         "typescript"

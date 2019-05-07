@@ -1,8 +1,4 @@
 .*
+*.log
 *.md
-*.yml
-build/
-src/
-node_modules/
-test/
 dist/demo.html
