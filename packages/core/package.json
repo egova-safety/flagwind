@@ -31,21 +31,21 @@
         "url": "https://github.com/flagwind/flagwind.core/issues"
     },
     "devDependencies": {
-        "@types/chai": "^4.1.7",
-        "@types/node": "^11.9.4",
-        "chai": "^4.1.7",
-        "chalk": "^2.3.0",
-        "es6-promise": "^4.1.1",
+        "@types/chai": "^4.2.9",
+        "@types/node": "^13.7.4",
+        "chai": "^4.2.0",
+        "chalk": "^3.0.0",
+        "es6-promise": "^4.2.8",
         "rimraf": "^2.6.3",
         "rollup": "^0.52.1",
         "rollup-plugin-replace": "^2.0.0",
-        "ts-loader": "^5.4.5",
-        "tslint": "^5.16.0",
+        "ts-loader": "^6.2.1",
+        "tslint": "^6.0.0",
         "tslint-config-flagwind": "^1.0.1",
         "tslint-loader": "^3.5.4",
-        "typescript": "^3.3.3",
-        "uglify-js": "^3.5.10",
-        "webpack": "^4.30.0"
+        "typescript": "^3.7.5",
+        "uglify-js": "^3.8.0",
+        "webpack": "^4.41.6"
     },
     "engines": {
         "node": ">= 6.0.0",

@@ -7,7 +7,7 @@
 
 import flagwind from "@egova/flagwind-core";
 import Type = flagwind.Type;
-import iView from "iview";
+import iView from "view-design";
 
 const iview: any = iView;
 const conflicts = ["Button", "Circle", "Col", "Content", "Form", "Footer", "Header", "Input", "Menu", "Option", "Progress", "Select", "Switch", "Table", "Time"];
@@ -48,6 +48,6 @@ export function install(Vue: any, opts: any = {})
     });
 }
 
-export * from "iview";
+export * from "view-design";
 
 export default components;
