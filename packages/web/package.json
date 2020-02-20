@@ -1,6 +1,6 @@
 {
     "name": "@egova/flagwind-web",
-    "version": "1.0.22",
+    "version": "1.0.23",
     "description": "flagwind web library",
     "author": "jason <jasonsoop@gmail.com>",
     "publishConfig": {
@@ -39,7 +39,7 @@
         "vue-property-decorator": ">=8.4.0"
     },
     "devDependencies": {
-        "@egova/flagwind-core": "^1.1.3",
+        "@egova/flagwind-core": "^1.1.4",
         "@types/node": "^13.7.4",
         "@vue/cli-plugin-babel": "^3.4.0",
         "@vue/cli-plugin-typescript": "^3.4.0",
