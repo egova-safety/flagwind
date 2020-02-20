@@ -9,4 +9,3 @@
 ``` sh
 npm run dist
 ```
-

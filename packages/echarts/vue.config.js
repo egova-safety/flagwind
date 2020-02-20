@@ -21,7 +21,6 @@ module.exports = {
     //对内部的 webpack 配置进行更细粒度的修改 https://github.com/neutrinojs/webpack-chain see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
     chainWebpack: config => {
 
-
         // 以便支持 @component({ template: require("./index.html") }) 这种模版加载方式
         // 注意：写include和exclude要在use和loader之前写
         config.module.rule('html').test(/\.html$/).exclude.add(/public/).end().use('raw-loader').loader('raw-loader');
