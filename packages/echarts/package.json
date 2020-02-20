@@ -1,6 +1,6 @@
 {
     "name": "@egova/flagwind-echarts",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "flagwind echarts library",
     "author": "jason <jasonsoop@gmail.com>",
     "publishConfig": {
@@ -30,10 +30,10 @@
         "dist": "npm run dist:build && npm run dist:types"
     },
     "peerDependencies": {
-        "@egova/flagwind-core": "^1.1.2",
-        "@egova/flagwind-web": "^1.0.21",
-        "echarts": "^4.6.0",
-        "lodash.debounce": "^4.0.8"
+        "@egova/flagwind-core": ">=1.1.2",
+        "@egova/flagwind-web": ">=1.0.21",
+        "echarts": ">=4.6.0",
+        "lodash.debounce": ">=4.0.8"
     },
     "devDependencies": {
         "@egova/flagwind-core": "^1.1.2",

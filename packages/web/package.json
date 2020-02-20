@@ -1,6 +1,6 @@
 {
     "name": "@egova/flagwind-web",
-    "version": "1.0.20",
+    "version": "1.0.21",
     "description": "flagwind web library",
     "author": "jason <jasonsoop@gmail.com>",
     "publishConfig": {
@@ -31,12 +31,12 @@
         "lint": "vue-cli-service lint"
     },
     "peerDependencies": {
-        "@egova/flagwind-core": "^1.1.2",
-        "equals": "^1.0.5",
-        "view-design": "^4.1.2",
-        "vue": "^2.6.11",
-        "vue-class-component": "^7.2.3",
-        "vue-property-decorator": "^8.4.0"
+        "@egova/flagwind-core": ">=1.1.2",
+        "equals": ">=1.0.5",
+        "view-design": ">=4.1.2",
+        "vue": ">=2.6.11",
+        "vue-class-component": ">=7.2.3",
+        "vue-property-decorator": ">=8.4.0"
     },
     "devDependencies": {
         "@egova/flagwind-core": "^1.1.2",
