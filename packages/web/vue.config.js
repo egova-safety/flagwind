@@ -30,7 +30,9 @@ module.exports = {
 
         // 以便支持 @component({ template: require("./index.html") }) 这种模版加载方式
         // 注意：写include和exclude要在use和loader之前写
-        config.module.rule('html').test(/\.html$/).exclude.add(/public/).end().use('raw-loader').loader('raw-loader');
+        config.module.rule('html').test(/\.html$/).exclude.add(/public/).end().use('raw-loader').options({
+            esModule: false
+        }).loader('raw-loader');
 
         // 只输出src下ts文件错误
         config.plugin('fork-ts-checker').tap(args => {
@@ -55,11 +57,11 @@ module.exports = {
     },
     //调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
     configureWebpack: config => {
-        config.externals= {
+        config.externals = {
             "@egova/flagwind-core": "@egova/flagwind-core",
             "view-design": "view-design",
             "equals": "equals",
-            "vue":"vue",
+            "vue": "vue",
             "vue-property-decorator": "vue-property-decorator",
             "vue-class-component": "vue-class-component"
         }

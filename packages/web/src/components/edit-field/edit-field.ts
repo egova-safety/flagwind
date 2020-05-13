@@ -23,7 +23,7 @@ const equals = require("equals");
  * @class
  * @version 1.0.0
  */
-@component({template: require("./edit-field.html").default})
+@component({template: require("./edit-field.html")})
 export default class EditField extends Component
 {
     /**

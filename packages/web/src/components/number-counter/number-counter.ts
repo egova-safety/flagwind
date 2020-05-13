@@ -117,7 +117,7 @@ const addClass = function(element: Element, name: string): void
  * @class
  * @version 1.0.0
  */
-@component({template: require("./number-counter.html").default})
+@component({template: require("./number-counter.html")})
 export default class NumberCounter extends Component
 {
     private _format: any;                                       // 格式化字符串解析后的匿名对象
