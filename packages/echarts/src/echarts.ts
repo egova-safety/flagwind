@@ -56,7 +56,7 @@ const MOUSE_EVENTS =
  * @class
  * @version 1.0.0
  */
-@component({template: require("./echarts.html")})
+@component({template: require("./echarts.html").default})
 export default class ECharts extends Component
 {
     private _chart?: echarts.ECharts;                        // ECharts 实例
