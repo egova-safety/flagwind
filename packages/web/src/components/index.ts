@@ -11,7 +11,6 @@
 import { default as iviewComponents, install as iviewInstall } from "./iview";
 import NumberCounter from "./number-counter";
 import EditField from "./edit-field";
-
 const components: any =
 {
     NumberCounter,
@@ -19,12 +18,11 @@ const components: any =
 };
 
 // tslint:disable-next-line:variable-name
-const install = function(Vue: any, opts: any = {})
-{
+const install = function (Vue: any, opts: any = {}) {
+    // 挂载全局事件
     iviewInstall(Vue, opts);
-    
-    Object.keys(components).forEach(key =>
-    {
+
+    Object.keys(components).forEach(key => {
         // flagwind 组件统一加小写 "fw" 标识
         // 最终在模板中使用组件时以类似 "fw-number-counter" 方式引用
         Vue.component("fw" + key, components[key]);

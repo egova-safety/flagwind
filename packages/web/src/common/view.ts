@@ -15,7 +15,6 @@ import { Component } from "./component";
  * @class
  * @version 1.0.0
  */
-export class View extends Component
-{
-    
+export class View extends Component {
+
 }
