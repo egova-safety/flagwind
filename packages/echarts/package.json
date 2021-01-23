@@ -74,5 +74,6 @@
         "> 1%",
         "last 2 versions",
         "not ie <= 8"
-    ]
+    ],
+    "gitHead": "b2c6443c16f4cfadfedeb2e94db28381506ad2f4"
 }
