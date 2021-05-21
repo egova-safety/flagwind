@@ -21,8 +21,8 @@ export default function receivable(uri: string, options: { priority?: number; sc
             } else if (options.scope === "root") {
                 $this = $this.$root;
             }
-            if ($this.$eventBus === undefined) {
-                $this.$eventBus = new flagwind.BroadcastManager();
+            if ($this.$flagwinEventBus === undefined) {
+                $this.$flagwinEventBus = new flagwind.BroadcastManager();
             }
             this.$subscribe(uri, descriptor.value, options.priority);
             if (mounted) {

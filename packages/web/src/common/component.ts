@@ -23,7 +23,7 @@ const components: any = iview;
  */
 export class Component extends Vue {
 
-    protected $eventBus: flagwind.BroadcastManager | undefined;
+    protected $flagwinEventBus: flagwind.BroadcastManager | undefined;
 
     protected _eventNames: Array<string> = [];
 
@@ -90,7 +90,7 @@ export class Component extends Vue {
         if (priority !== undefined) {
             contract.priority = priority;
         }
-        (this.$eventBus || flagwind.BroadcastManager.instance).register(contract, new VueReceiver(this, fn));
+        (this.$flagwinEventBus || flagwind.BroadcastManager.instance).register(contract, new VueReceiver(this, fn));
     }
 
     protected $publish(uri: string, args?: any) {
@@ -104,7 +104,7 @@ export class Component extends Vue {
 
         let $this: any = this;
         do {
-            let bus: flagwind.BroadcastManager = ($this.$eventBus || flagwind.BroadcastManager.instance);
+            let bus: flagwind.BroadcastManager = ($this.$flagwinEventBus || flagwind.BroadcastManager.instance);
             // let entries: flagwind.Map<string, any> = bus.receiverProvider._entries;
             if (bus.hasReceiver(broadcast.uri)) {
                 bus.send(broadcast);
@@ -117,7 +117,7 @@ export class Component extends Vue {
     }
 
     protected destroyed() {
-        let bus = (this.$eventBus || flagwind.BroadcastManager.instance);
+        let bus = (this.$flagwinEventBus || flagwind.BroadcastManager.instance);
         if (this.$eventNames && this.$eventNames.length > 0) {
             this.$eventNames.forEach(uri => {
                 bus.unregister(new flagwind.BroadcastContract(uri));
