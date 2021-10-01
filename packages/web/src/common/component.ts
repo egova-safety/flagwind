@@ -10,11 +10,8 @@
 
 import Vue from "vue";
 import flagwind from "@egova/flagwind-core";
-import { LoadingBarConfig, Message, Notice, Spin, ModalInstance } from "view-design";
-import iview from "../components/iview";
 import { VueReceiver } from "./broadcast";
 
-const components: any = iview;
 
 /**
  * 定义组件的基础功能。
@@ -22,7 +19,6 @@ const components: any = iview;
  * @version 1.0.0
  */
 export class Component extends Vue {
-
     protected $flagwinEventBus: flagwind.BroadcastManager | undefined;
 
     protected _eventNames: Array<string> = [];
@@ -44,45 +40,45 @@ export class Component extends Vue {
         return flagwind.ServiceProviderFactory.instance.default;
     }
 
-    /**
-     * 获取一个全局加载条实例。
-     * @returns LoadingBar
-     */
-    protected get $loading(): LoadingBarConfig {
-        return components.LoadingBar;
-    }
+    // /**
+    //  * 获取一个全局加载条实例。
+    //  * @returns LoadingBar
+    //  */
+    // protected get $loading(): LoadingBarConfig {
+    //     return components.LoadingBar;
+    // }
 
-    /**
-     * 获取一个全局消息提示框实例。
-     * @returns Message
-     */
-    protected get $message(): Message {
-        return components.Message;
-    }
+    // /**
+    //  * 获取一个全局消息提示框实例。
+    //  * @returns Message
+    //  */
+    // protected get $message(): Message {
+    //     return components.Message;
+    // }
 
-    /**
-     * 获取一个全局模态框实例。
-     * @returns Modal
-     */
-    protected get $modal(): ModalInstance {
-        return components.Modal;
-    }
+    // /**
+    //  * 获取一个全局模态框实例。
+    //  * @returns Modal
+    //  */
+    // protected get $modal(): ModalInstance {
+    //     return components.Modal;
+    // }
 
-    /**
-     * 获取一个全局通知提醒实例。
-     * @returns Notice
-     */
-    protected get $notice(): Notice {
-        return components.Notice;
-    }
+    // /**
+    //  * 获取一个全局通知提醒实例。
+    //  * @returns Notice
+    //  */
+    // protected get $notice(): Notice {
+    //     return components.Notice;
+    // }
 
-    /**
-     * 获取一个全局加载中组件实例。
-     * @returns Spin
-     */
-    protected get $spin(): Spin {
-        return components.Spin;
-    }
+    // /**
+    //  * 获取一个全局加载中组件实例。
+    //  * @returns Spin
+    //  */
+    // protected get $spin(): Spin {
+    //     return components.Spin;
+    // }
 
     protected $subscribe(uri: string, fn: Function, priority?: number) {
         this.$eventNames.push(uri);
@@ -90,7 +86,10 @@ export class Component extends Vue {
         if (priority !== undefined) {
             contract.priority = priority;
         }
-        (this.$flagwinEventBus || flagwind.BroadcastManager.instance).register(contract, new VueReceiver(this, fn));
+        (this.$flagwinEventBus || flagwind.BroadcastManager.instance).register(
+            contract,
+            new VueReceiver(this, fn)
+        );
     }
 
     protected $publish(uri: string, args?: any) {
@@ -104,7 +103,8 @@ export class Component extends Vue {
 
         let $this: any = this;
         do {
-            let bus: flagwind.BroadcastManager = ($this.$flagwinEventBus || flagwind.BroadcastManager.instance);
+            let bus: flagwind.BroadcastManager =
+                $this.$flagwinEventBus || flagwind.BroadcastManager.instance;
             // let entries: flagwind.Map<string, any> = bus.receiverProvider._entries;
             if (bus.hasReceiver(broadcast.uri)) {
                 bus.send(broadcast);
@@ -112,12 +112,11 @@ export class Component extends Vue {
             } else {
                 $this = $this.$parent;
             }
-        }
-        while ($this != null);
+        } while ($this != null);
     }
 
     protected destroyed() {
-        let bus = (this.$flagwinEventBus || flagwind.BroadcastManager.instance);
+        let bus = this.$flagwinEventBus || flagwind.BroadcastManager.instance;
         if (this.$eventNames && this.$eventNames.length > 0) {
             this.$eventNames.forEach(uri => {
                 bus.unregister(new flagwind.BroadcastContract(uri));
@@ -125,5 +124,4 @@ export class Component extends Vue {
             console.info("局部eventBus自动销毁");
         }
     }
-
 }

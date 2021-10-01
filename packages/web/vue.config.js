@@ -59,7 +59,7 @@ module.exports = {
     configureWebpack: config => {
         config.externals = {
             "@egova/flagwind-core": "@egova/flagwind-core",
-            "view-design": "view-design",
+            "ant-design-vue": "ant-design-vue",
             "equals": "equals",
             "vue": "vue",
             "vue-property-decorator": "vue-property-decorator",
