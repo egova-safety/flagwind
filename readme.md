@@ -2,7 +2,8 @@
 
 该项目是把flagwind-core 、flagwind-web、 flagwind-echarts 三个前端工程使用lerna技术整合在一起，以便对其进行版本管理和快速发布。部分内容在原有项目上做了稍微调整和依赖升级操作。
 
-## 如何使用
+## 发包说明
+
 
 1. 安装
 
