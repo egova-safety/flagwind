@@ -2,22 +2,33 @@ import Vue from "vue";
 import { ObjectFactory } from "./object-factory";
 
 class ResponseHandler {
-
     public static queryHandler(
         service: Object,
         method: Function,
-        option?: { title?: string; dataName?: string; showTip?: boolean }
+        option?: {
+            title?: string;
+            dataName?: string;
+            showTip?: boolean;
+            showErrorMsg?: boolean;
+        }
     ) {
         return async (...arg: Array<any>) => {
-            let { title = "", dataName = "", showTip = false } = option as any;
+            let {
+                title = "",
+                dataName = "",
+                showTip = false,
+                showErrorMsg = false,
+            } = option as any;
             try {
                 let result = await method.call(service, ...arg);
                 let msg: string;
                 if (result.hasError) {
                     msg = title ? `${title}出错!` : "请求服务失败";
-                    showTip && ResponseHandler.message.error(msg);
+                    msg = showErrorMsg ? result.message : msg;
+                    (showTip || showErrorMsg) &&
+                        ResponseHandler.message.error(msg);
                     console.error(msg);
-                    return null;
+                    return result;
                 }
                 let data = dataName ? result[dataName] : result;
                 if (
@@ -33,7 +44,8 @@ class ResponseHandler {
                 return data;
             } catch (error) {
                 let msg = title ? `${title}出错!` : "请求服务失败";
-                showTip && ResponseHandler.message.error(msg);
+                msg = showErrorMsg ? error.response?.data?.message || msg : msg;
+                (showTip || showErrorMsg) && ResponseHandler.message.error(msg);
                 console.error(msg, error);
             }
         };
@@ -42,16 +54,28 @@ class ResponseHandler {
     public static saveHandler(
         service: Object,
         method: Function,
-        option?: { title?: string; dataName?: string; showTip?: boolean }
+        option?: {
+            title?: string;
+            dataName?: string;
+            showTip?: boolean;
+            showErrorMsg?: boolean;
+        }
     ) {
-        let { title = "", dataName = "", showTip = false } = option as any;
+        let {
+            title = "",
+            dataName = "",
+            showTip = false,
+            showErrorMsg = false,
+        } = option as any;
         return async (...arg: Array<any>) => {
             try {
                 let result = await method.call(service, ...arg);
                 let msg: string;
                 if (result.hasError) {
                     msg = title ? `${title}出错!` : "请求服务失败";
-                    showTip && ResponseHandler.message.error(msg);
+                    msg = showErrorMsg ? result.message : msg;
+                    (showTip || showErrorMsg) &&
+                        ResponseHandler.message.error(msg);
                     console.error(msg);
                     return result;
                 }
@@ -61,7 +85,8 @@ class ResponseHandler {
                 return data;
             } catch (error) {
                 let msg = title ? `${title}出错!` : "请求服务失败";
-                showTip && ResponseHandler.message.error(msg);
+                msg = showErrorMsg ? error.response?.data?.message || msg : msg;
+                (showTip || showErrorMsg) && ResponseHandler.message.error(msg);
                 console.error(msg, error);
             }
         };
@@ -82,7 +107,12 @@ class ResponseHandler {
  */
 export default function service(
     serviveType: string,
-    option?: { title?: string; dataName?: string; showTip?: boolean }
+    option?: {
+        title?: string;
+        dataName?: string;
+        showTip?: boolean;
+        showErrorMsg?: boolean;
+    }
 ) {
     return function (target: any, name: any) {
         let method: Function = target[name];
@@ -99,7 +129,7 @@ export default function service(
         Object.defineProperty(service, name, {
             get: function () {
                 return handler(service, method, option);
-            }
+            },
         });
         ObjectFactory.set(serviceName, service);
     };
