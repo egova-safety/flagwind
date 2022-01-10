@@ -97,7 +97,7 @@ class ResponseHandler {
      * 全局通知对象
      */
     public static get message() {
-        return Vue.prototype.$Message;
+        return Vue.prototype.$message;
     }
 }
 
