@@ -17,8 +17,9 @@ class ResponseHandler {
                 title = "",
                 dataName = "",
                 showTip = false,
-                showErrorMsg = false,
+                showErrorMsg = false
             } = option as any;
+            
             try {
                 let result = await method.call(service, ...arg);
                 let msg: string;
@@ -65,7 +66,7 @@ class ResponseHandler {
             title = "",
             dataName = "",
             showTip = false,
-            showErrorMsg = false,
+            showErrorMsg = false
         } = option as any;
         return async (...arg: Array<any>) => {
             try {
@@ -114,7 +115,7 @@ export default function service(
         showErrorMsg?: boolean;
     }
 ) {
-    return function (target: any, name: any) {
+    return function(target: any, name: any) {
         let method: Function = target[name];
         let handler =
             serviveType === "query"
@@ -127,9 +128,9 @@ export default function service(
             ? ObjectFactory.get(serviceName)
             : ObjectFactory.create(target.constructor);
         Object.defineProperty(service, name, {
-            get: function () {
+            get: function() {
                 return handler(service, method, option);
-            },
+            }
         });
         ObjectFactory.set(serviceName, service);
     };
