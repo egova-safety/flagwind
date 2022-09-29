@@ -1,5 +1,3 @@
-
-
 import component, { mixins } from "vue-class-component";
 import { Prop as config, Model as model, Watch as watch, Inject as inject, Provide as provide, PropSync as propSync } from "vue-property-decorator";
 

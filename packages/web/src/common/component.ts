@@ -1,5 +1,3 @@
-
-
 import Vue from "vue";
 import flagwind from "@egova/flagwind-core";
 import { VueReceiver } from "./broadcast";
