@@ -32,12 +32,7 @@ class ResponseHandler {
                     return result;
                 }
                 let data = dataName ? result[dataName] : result;
-                if (
-                    !data // ||
-                    // (data.$isObject() && data.$isEmpty()) ||
-                    // (data.$isArray() && data.$isEmpty()) ||
-                    // (dataName === "" && result.result.$isEmpty())
-                ) {
+                if (!data) {
                     msg = `${title}无结果!`;
                     showTip && ResponseHandler.message.warning(msg);
                     console.warn(msg);
