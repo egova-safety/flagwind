@@ -2,7 +2,6 @@ import Vue from "vue";
 import { ObjectFactory } from "./object-factory";
 
 class ResponseHandler {
-
     public static queryHandler(
         service: Object,
         method: Function,
@@ -61,7 +60,9 @@ class ResponseHandler {
                 return data;
             } catch (error) {
                 let msg = title ? `${title}出错!` : "请求服务失败";
-                showTip && ResponseHandler.message.error(msg);
+                // 401时不进行提示
+                showTip && error?.response?.status !== 401 &&
+                    ResponseHandler.message.error(msg);
                 console.error(msg, error);
             }
         };
@@ -84,7 +85,7 @@ export default function service(
     serviveType: string,
     option?: { title?: string; dataName?: string; showTip?: boolean }
 ) {
-    return function (target: any, name: any) {
+    return function(target: any, name: any) {
         let method: Function = target[name];
         let handler =
             serviveType === "query"
@@ -97,7 +98,7 @@ export default function service(
             ? ObjectFactory.get(serviceName)
             : ObjectFactory.create(target.constructor);
         Object.defineProperty(service, name, {
-            get: function () {
+            get: function() {
                 return handler(service, method, option);
             }
         });
